@@ -10,7 +10,7 @@ const User = require('./User');
 
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001; /**use heroku port or our custom port */
 
 // MIDDLEWARE //
 
