@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const dotenv = require('dotenv')
 const mongoose = require('mongoose');
 const products = require('./products');
 const Order = require('./Order');
@@ -10,6 +11,7 @@ const User = require('./User');
 
 
 const app = express();
+dotenv.config();
 const port = process.env.PORT || 3001; /**use heroku port or our custom port */
 
 // MIDDLEWARE //
@@ -17,10 +19,8 @@ const port = process.env.PORT || 3001; /**use heroku port or our custom port */
 app.use(express.json());
 app.use(cors());
 
-// CONNECTION URL //
-const connection_url = 'mongodb+srv://ibro001:kaliLINUX2525@Blog.llrgipw.mongodb.net/?retryWrites=true&w=majority'
 
-mongoose.connect(connection_url,{
+mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 }); 
